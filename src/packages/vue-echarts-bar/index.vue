@@ -18,7 +18,7 @@
                     return {
                         type: 'histogram', //histogram/bar
                         // 是否堆叠
-                         : true,
+                        stackable: true,
                         // 坐标轴是否可见 xAxis: axisVisible[0], yAxis: axisVisble[1];
                         axisType: [],
                         axisVisible: [true, true],
@@ -98,7 +98,6 @@
                 if (data){
                     xAxis.data = data;
                 }
-                Object.assign({}, xAxis, this.xAxis);
                 /*let propsXAxis = this.xAxis;
                 if (!propsXAxis) return;*/
                 return xAxis;
@@ -121,12 +120,7 @@
                 };
                 return yAxis;
             },
-            setAxis(option, propsAxis){
-                if (propsAxis){
-                    if (typeof propsAxis === 'object'){
-
-                    }
-                }
+            setAxis(option){
                 let {type, name, data, visible} = option;
                 let axis = {
                     type: type || 'category',
@@ -148,7 +142,7 @@
                 let series = [];
                 this.initSeriesModel();
                 let {dimensions, source} = this.chartsData;
-                let {   } = this.chartOption;
+                let { stackable } = this.chartOption;
                 let columns = dimensions.slice(1);
                 series = columns.map(key=>{
                     let itemData = [];
@@ -156,7 +150,7 @@
                     source.forEach(item=>{
                         itemData.push(item[key]);
                     });
-                    if( ){
+                    if(stackable){
                         obj.stack = dimensions[0]
                     }
                     obj.name = key;
@@ -177,9 +171,8 @@
                 let data = source.map(item=>{
                     return item[dimension];
                 });
-
-                let xAxis = this.setAxis({type:axisType[0], visible: axisVisible[0], name:axisName[0]}, this.xAxis);
-                let yAxis= this.setAxis({type:axisType[1], visible: axisVisible[1], name:axisName[1], data}, this.yAxis);
+                let xAxis = this.setAxis({type:axisType[0], visible: axisVisible[0], name:axisName[0]});
+                let yAxis= this.setAxis({type:axisType[1], visible: axisVisible[1], name:axisName[1], data});
 
 
                 let series = this.setSeries();

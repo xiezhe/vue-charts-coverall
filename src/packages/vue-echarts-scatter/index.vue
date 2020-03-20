@@ -8,7 +8,6 @@
     // 离散图
     import 'echarts/lib/chart/scatter';
     import {echartsCoreMixin} from "../echarts-core";
-    import {pieData} from './data';
     export default {
         name: "vue-echarts-scatter",
         mixins: [echartsCoreMixin],
