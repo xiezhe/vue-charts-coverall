@@ -1,15 +1,17 @@
 {
-  "name": "vue-charts",
+  "name": "vue-echarts",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:e2e": "vue-cli-service test:e2e",
-    "test:unit": "vue-cli-service test:unit"
+    "test:unit": "vue-cli-service test:unit",
+    "lib": "vue-cli-service build --target lib --name vue-charts --dest lib src/index.js"
   },
   "dependencies": {
     "core-js": "^3.6.4",
+    "echarts": "^4.6.0",
     "register-service-worker": "^1.6.2",
     "vue": "^2.6.11",
     "vue-router": "^3.1.5",

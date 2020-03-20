@@ -1,4 +1,4 @@
-# vue-charts
+# vue-echarts
 
 ## Project setup
 ```
