@@ -7,7 +7,7 @@ import VueEchartsEffectScatter from './packages/vue-echarts-effectScatter'
 import VueEchartsRadar from './packages/vue-echarts-radar'
 import VueEchartsTree from './packages/vue-echarts-tree'
 import VueEchartsTreemap from './packages/vue-echarts-treemap'
-import VueEchartsSunburs from './packages/vue-echarts-sunburs'
+import VueEchartsSunburst from './packages/vue-echarts-sunburst'
 import VueEchartsBoxplot from './packages/vue-echarts-boxplot'
 import VueEchartsCandlestick from './packages/vue-echarts-candlestick'
 import VueEchartsHeatmap from './packages/vue-echarts-heatmap'
@@ -32,7 +32,7 @@ const components = [
     VueEchartsRadar,
     VueEchartsTree,
     VueEchartsTreemap,
-    VueEchartsSunburs,
+    VueEchartsSunburst,
     VueEchartsBoxplot,
     VueEchartsCandlestick,
     VueEchartsHeatmap,
@@ -67,7 +67,7 @@ export default {
     VueEchartsRadar,
     VueEchartsTree,
     VueEchartsTreemap,
-    VueEchartsSunburs,
+    VueEchartsSunburst,
     VueEchartsBoxplot,
     VueEchartsCandlestick,
     VueEchartsHeatmap,

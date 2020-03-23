@@ -1,7 +1,17 @@
 {
-  "name": "vue-echarts",
+  "name": "vue-charts-coverall",
+  "description": "vue.js echarts.js d3.js three.js",
+  "keywords": "vue echarts d3 three",
   "version": "0.1.0",
-  "private": true,
+  "author": {
+    "name": "xiezhe",
+    "email": "xiezhev@gmail.com"
+  },
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiezhe/vue-charts-coverall.git"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
