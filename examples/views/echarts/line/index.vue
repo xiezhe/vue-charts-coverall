@@ -1,9 +1,13 @@
 <template>
     <div class="example-line">
         <h1>line</h1>
-        <div class="line" v-for="item in barData">
-            <h2>{{item.title}}</h2>
-            <VueEchartsLine :chartsData="item.chartsData" :chartOption="item.chartOption"></VueEchartsLine>
+        <div class="line" v-for="item in renderData">
+            <VueEchartsLine :chartsData="item.chartsData"
+                            :chartsOption="item.chartsOption"
+                            :title="item.title"
+                            :dataZoom="item.dataZoom"
+                            :grid="item.grid"
+                            :visualMap="item.visualMap"></VueEchartsLine>
             <div>
 
             </div>
@@ -13,7 +17,7 @@
 </template>
 
 <script>
-    import {barData} from './data'
+    import {renderData} from './data'
     import VueEchartsLine from '_p/vue-echarts-line'
     export default {
         name: "echarts-line",
@@ -22,11 +26,11 @@
         },
         data(){
             return {
-                barData,
+                renderData
             }
         },
         mounted(){
-            console.log(this.barData);
+
         }
     }
 </script>

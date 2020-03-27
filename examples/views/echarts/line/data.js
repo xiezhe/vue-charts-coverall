@@ -22,11 +22,29 @@ const stackData = {
         {'星期': 'Sun', '邮件营销': 210, '联盟广告':230, '视频广告':410, '直接访问':320, '搜索引擎':1320}
     ]
 };
-export const barData = [
+const areaPiecesData = {
+    dimensions: ['日期','数值'],
+    source: [
+        {'日期': '2019-10-10', '数值': 200},
+        {'日期': '2019-10-11', '数值': 400},
+        {'日期': '2019-10-12', '数值': 650},
+        {'日期': '2019-10-13', '数值': 500},
+        {'日期': '2019-10-14', '数值': 250},
+        {'日期': '2019-10-15', '数值': 300},
+        {'日期': '2019-10-16', '数值': 450},
+        {'日期': '2019-10-17', '数值': 300},
+        {'日期': '2019-10-18', '数值': 100},
+    ]
+};
+export const renderData = [
     {
-        title: '普通折线图(Basic Line Chart)',
+        title:{
+            text:'普通折线图(Basic Line Chart)',
+            left: 'center',
+        },
         chartsData: data,
-        chartOption: {
+        chartsOption: {
+            legend: {top: 30},
             // 针对 全局
             seriesSetting: {
                 label: {
@@ -37,17 +55,18 @@ export const barData = [
         }
     },
     {
-        title:'区域折线图(Basic area chart)',
+        title:{
+            text:'区域折线图(Basic area chart)',
+            left: 'center',
+        },
         chartsData: data,
-        chartOption: {
+        chartsOption: {
             axisVisible: [true, true],
             // 坐标轴展示数据类型 这两个参数配置不好图形展示会出现差异
             axisName: ['', ''],
             // 针对x轴的起始
             boundaryGap: false,
-            legend: {
-                visible: true
-            },
+            legend: {top: 30},
             // 针对 全局
             seriesSetting: {
                 smooth: true,
@@ -56,17 +75,18 @@ export const barData = [
         }
     },
     {
-        title:'柔顺过渡折线图(Smoothed line chart)',
+        title:{
+            text:'柔顺过渡折线图(Smoothed line chart)',
+            left: 'center',
+        },
         chartsData: data,
-        chartOption: {
+        chartsOption: {
             axisVisible: [true, true],
             // 坐标轴展示数据类型 这两个参数配置不好图形展示会出现差异
             axisName: ['', ''],
             // 针对x轴的起始
             boundaryGap: false,
-            legend: {
-                visible: true
-            },
+            legend: {top: 30},
             // 针对 全局
             seriesSetting: {
                 smooth: true
@@ -74,18 +94,19 @@ export const barData = [
         }
     },
     {
-        title:'堆叠区域折线图(Stacked area chart)',
+        title:{
+            text:'堆叠区域折线图(Stacked area chart)',
+            left: 'center',
+        },
         chartsData: stackData,
-        chartOption: {
+        chartsOption: {
             axisVisible: [true, true],
             // 坐标轴展示数据类型 这两个参数配置不好图形展示会出现差异
             axisName: ['', ''],
             stackable: true,
             // 针对x轴的起始
             boundaryGap: false,
-            legend: {
-                visible: true
-            },
+            legend: {top: 30},
             // 针对 全局
             seriesSetting: {
                 smooth: true,
@@ -94,17 +115,78 @@ export const barData = [
         }
     },
     {
-        title:'堆叠折线图(Stacked line chart)',
+        title:{
+            text:'堆叠折线图(Stacked line chart)',
+            left: 'center',
+        },
         chartsData: stackData,
-        chartOption: {
+        chartsOption: {
             axisVisible: [true, true],
             // 坐标轴展示数据类型 这两个参数配置不好图形展示会出现差异
             axisName: ['', ''],
             stackable: true,
             // 针对x轴的起始
             boundaryGap: false,
-            legend: {
-                visible: true
+            legend: {top: 30}
+        }
+    },
+    {
+        title:{
+            text:'区域段折线图(Area Pieces)',
+            left: 'center',
+        },
+        chartsData: areaPiecesData,
+        visualMap: {
+            type: 'piecewise',
+            show: false,
+            dimension: 0,
+            seriesIndex: 0,
+            pieces: [{
+                gt: 1,
+                lt: 3,
+                color: 'rgba(0, 180, 0, 0.5)'
+            }, {
+                gt: 5,
+                lt: 7,
+                color: 'rgba(0, 180, 0, 0.5)'
+            }]
+        },
+        chartsOption: {
+            axisVisible: [true, true],
+            // 坐标轴展示数据类型 这两个参数配置不好图形展示会出现差异
+            axisName: ['', ''],
+            stackable: true,
+            // 针对x轴的起始
+            boundaryGap: false,
+            legend: {top: 30},
+            tooltip:{
+                left: 'center',
+                feature: {
+                    dataZoom: {
+                        yAxisIndex: 'none'
+                    },
+                    restore: {},
+                    saveAsImage: {}
+                }
+            },
+            seriesSetting: {
+                smooth: 0.6,
+                symbol: 'none',
+                lineStyle: {
+                    color: 'green',
+                    width: 5
+                },
+                markLine: {
+                    symbol: ['none', 'none'],
+                    label: {show: false},
+                    data: [
+                        {xAxis: 1},
+                        {xAxis: 3},
+                        {xAxis: 5},
+                        {xAxis: 7}
+                    ]
+                },
+                areaStyle: {},
             }
         }
     }

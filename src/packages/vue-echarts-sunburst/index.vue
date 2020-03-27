@@ -7,7 +7,6 @@
 <script>
     import 'echarts/lib/chart/sunburst';
     import {echartsCoreMixin} from "../echarts-core";
-    //应用维度 encode
     export default {
         name: "vue-echarts-sunburst",
         mixins: [echartsCoreMixin],
@@ -30,10 +29,16 @@
         components: {
         },
         methods: {
+            setSeries(){
 
+            },
+            setCharts(){
+               if (!this.chartsData) return;
+            }
         },
         mounted(){
-
+            this.setCharts();
+            this.init();
         }
     }
 </script>

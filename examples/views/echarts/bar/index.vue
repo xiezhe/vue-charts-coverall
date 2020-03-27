@@ -1,9 +1,9 @@
 <template>
     <div class="example-bar">
         <h1>bar</h1>
-        <div class="bar" v-for="item in barData">
+        <div class="bar" v-for="item in renderData">
             <h2>histogram柱状图</h2>
-            <VueEchartsBar :chartsData="item.chartsData" :chartOption="item.chartOption"></VueEchartsBar>
+            <VueEchartsBar :chartsData="item.chartsData" :chartsOption="item.chartsOption"></VueEchartsBar>
             <div>
 
             </div>
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-    import {barData} from './data'
+    import {renderData} from './data'
     import VueEchartsBar from '_p/vue-echarts-bar'
     export default {
         name: "echarts-bar",
@@ -22,11 +22,11 @@
         },
         data(){
             return {
-                barData,
+                renderData
             }
         },
         mounted(){
-            console.log(this.barData);
+
         }
     }
 </script>

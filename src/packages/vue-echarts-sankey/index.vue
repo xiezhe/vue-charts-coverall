@@ -16,16 +16,39 @@
         },
         data(){
             return {
-
+                seriesModel:{
+                    type: 'sankey',
+                    data: [],
+                    links: []
+                },
+                chartTooltip: {
+                    show: true,
+                    trigger: 'axis'
+                }
             }
         },
         components: {
         },
         methods: {
-
+            setSeries(){
+                let series = [];
+                let seriesModel = this.initSeriesModel();
+                let obj = Object.assign({}, seriesModel);
+                let {nodes, links} = this.chartsData;
+                obj.data = nodes;
+                obj.links = links;
+                series.push(obj);
+                return series;
+            },
+            setCharts(){
+                let series = this.setSeries();
+                let tooltip = this.setTooltip();
+                this.echartsOption = {series, tooltip};
+            }
         },
         mounted(){
-
+            this.setCharts();
+            this.init();
         }
     }
 </script>

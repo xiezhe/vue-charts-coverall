@@ -7,13 +7,12 @@
 <script>
     import 'echarts/lib/chart/line';
     import {echartsCoreMixin} from "../echarts-core";
-    import {stackData} from './data';
     //应用维度 encode
     export default {
         name: "vue-echarts-bar",
         mixins: [echartsCoreMixin],
         props: {
-            chartOption: {
+            chartsOption: {
                 type: Object,
                 default: ()=>{
                     return {
@@ -48,14 +47,7 @@
             },
 
             chartsData: {
-                type: Object,
-                default: function () {
-                    return stackData
-                }
-            },
-            // seriesOption 但是在seriesData里面设置方便些
-            chartsSeriesOption: {
-                type: Object|Array
+                type: Object
             }
         },
         data(){
@@ -63,7 +55,7 @@
                 data: {
 
                 },
-                chartsOption: null,
+                echartsOption: null,
                 seriesModel: {
                     type: 'line',
                     name: '',
@@ -86,7 +78,7 @@
         },
         methods: {
             initSeriesModel(){
-                let {seriesSetting} = this.chartOption;
+                let {seriesSetting} = this.chartsOption;
                 this.seriesModel = Object.assign(this.seriesModel, seriesSetting);
             },
             // 设置坐标参数
@@ -113,7 +105,7 @@
                 let series = [];
                 this.initSeriesModel();
                 let {dimensions, source} = this.chartsData;
-                let { stackable } = this.chartOption;
+                let { stackable } = this.chartsOption;
                 let columns = dimensions.slice(1);
                 series = columns.map(key=>{
                     let itemData = [];
@@ -132,7 +124,7 @@
             },
             // 普通柱状图
             setLine(){
-                let { axisType, axisVisible, axisName, boundaryGap} = this.chartOption;
+                let { axisType, axisVisible, axisName, boundaryGap} = this.chartsOption;
                 if (!axisType){
                     axisType = ['category', 'value'];
                 }
@@ -149,7 +141,7 @@
                 let series = this.setSeries();
                 let legend = this.setLegend();
                 let tooltip = this.setTooltip();
-                this.chartsOption = {legend, series, xAxis, yAxis, tooltip};
+                this.echartsOption = {legend, series, xAxis, yAxis, tooltip};
             },
             setNormalOption(){
                 this.setLine();
@@ -159,7 +151,7 @@
                 let {xAxis, yAxis} = this.chartsSetOption;
                 let series = this.setSeries();
                 let option = {dataset:{dimensions, source}, series, xAxis, yAxis};
-                this.chartsOption = {...option};
+                this.echartsOption = {...option};
             }
         },
         mounted(){

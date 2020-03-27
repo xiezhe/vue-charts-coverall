@@ -1,6 +1,11 @@
 import echarts from 'echarts/lib/echarts'
 import 'echarts/lib/component/tooltip'
 import 'echarts/lib/component/legend'
+import 'echarts/lib/component/title'
+import 'echarts/lib/component/dataZoom'
+import 'echarts/lib/component/brush'
+import 'echarts/lib/component/visualMap'
+import 'echarts/lib/component/radar'
 import {ECHARTS_ANIMATION, ECHARTS_RARELY, ECHARTS_COLORS, ECHARTS_FREQUENT} from "./constants";
 
 export const echartsCoreMixin = {
@@ -21,6 +26,7 @@ export const echartsCoreMixin = {
 
     },
     props: {
+        chartsData: [Object, Array],
         // 要分析渲染的数据
         dataStyle: {
             type: String,
@@ -30,7 +36,8 @@ export const echartsCoreMixin = {
             type: [Object, Array],
             default:()=>({})
         },
-        chartsOptions: Object,
+        chartsOption: Object,
+        backgroundColor: String,
         title: [Object, Array],
         legend: [Object, Array],
         grid: [Object, Array],
@@ -50,6 +57,9 @@ export const echartsCoreMixin = {
         calendar: [Object, Array],
         dataset: [Object, Array],
         series: [Object, Array],
+        parallel:[Object, Array],
+        parallelAxis:[Object, Array],
+        singleAxis:[Object, Array],
         // 颜色
         colors: Array,
         // 动画里的参数
@@ -71,32 +81,36 @@ export const echartsCoreMixin = {
             default: true
         }
     },
+    data(){
+        return {
+            axisVisible: [true, true],
+            axisName: ['', ''],
+            axisType: ['category', 'value']
+        }
+    },
     methods: {
         setLegend(){
-            let { legend } = this.chartOption;
+            let { legend } = this.chartsOption;
             let {dimensions} = this.chartsData;
             let renderLegend = null;
-            if (legend && legend.visible){
-                if (legend.data){
-                    renderLegend =  legend;
-                } else {
-                    console.log(this.chartLegend);
-                    renderLegend = Object.assign({}, this.chartLegend);
-                    renderLegend.data = dimensions.slice(1);
-                }
+            renderLegend = Object.assign({}, this.chartLegend);
+            renderLegend.data = dimensions.slice(1);
+            if (legend){
+                Object.assign(renderLegend, legend);
             }
             return renderLegend;
         },
         setTooltip(){
-            let { tooltip } = this.chartOption;
+            let { tooltip } = this.chartsOption;
             if (tooltip){
                 return tooltip;
             }
             return this.chartTooltip
         },
         initSeriesModel(){
-            let {seriesSetting} = this.chartOption;
-            this.seriesModel = Object.assign(this.seriesModel, seriesSetting);
+            let {seriesSetting} = this.chartsOption;
+            let seriesModel = Object.assign({}, this.seriesModel, seriesSetting);
+            return seriesModel;
         },
         setOptionByKeys(options, propsObj, defaultKeys){
             let keys = Object.keys(propsObj);
@@ -108,7 +122,7 @@ export const echartsCoreMixin = {
         },
         setOptionByDefault(options, defaultKeys){
             defaultKeys.forEach(key=>{
-                if (this[key]) options[key] = this[key]
+                if (this[key]) options[key] = this[key];
             })
         },
         setAnimation(options){
@@ -135,10 +149,7 @@ export const echartsCoreMixin = {
             options.color = this.colors || themeColors || ECHARTS_COLORS;
         },
         setFrequentOption(options){
-            this.setOptionByDefault(options, ECHARTS_RARELY)
-        },
-        setLengend(){
-
+            this.setOptionByDefault(options, ECHARTS_FREQUENT)
         },
         // 设置单独传入的参数
         setOptions(options){
@@ -168,8 +179,9 @@ export const echartsCoreMixin = {
             };
             let option = {};
             this.setOptions(option);
-
-            this.chartsCanvas.setOption(this.chartsOption);
+            let mergeOptions = Object.assign({},this.echartsOption, option);
+            console.log(mergeOptions);
+            this.chartsCanvas.setOption(mergeOptions, true);
             /*if (this.data) this.changeHandler()
             this.createEventProxy()
             if (this.resizeable) this.addResizeListener()*/

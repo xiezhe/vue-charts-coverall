@@ -1,26 +1,27 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
     {
         path: '/',
         name: 'Home',
-        redirect: {
-            name: 'echartsView',
-            params: {type: 'pie'}
-        }
+        redirect: 'echarts'
     },
     {
-        path: '/echarts/:type',
-        name: 'echartsView',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
-        component: () => import(/* webpackChunkName: "echartsView" */ '../views/echarts')
+        path: '/echarts',
+        name: 'echarts',
+        component: () => import(/* webpackChunkName: "echarts" */ '../views/echarts'),
+        children: [
+            {
+                path:'type/:type',
+                name: 'echartsType',
+                component: () => import(/* webpackChunkName: "echarts" */ '../views/echarts/template'),
+            }
+        ]
     }
-]
+];
 
 const router = new VueRouter({
     mode: 'history',

@@ -1,111 +1,120 @@
-const data =  {
-    dimensions: ['星期', '步数'],
+const data1 =  {
     source: [
-        {'星期': 'Mon', '步数': 820},
-        {'星期': 'Tue', '步数': 932},
-        {'星期': 'Wed', '步数': 901},
-        {'星期': 'Thu', '步数': 934},
-        {'星期': 'Fri', '步数': 1290},
-        {'星期': 'Sat', '步数': 1330},
-        {'星期': 'Sun', '步数': 1320}
+                [10.0, 8.04],
+                [8.0, 6.95],
+                [13.0, 7.58],
+                [9.0, 8.81],
+                [11.0, 8.33],
+                [14.0, 9.96],
+                [6.0, 7.24],
+                [4.0, 4.26],
+                [12.0, 10.84],
+                [7.0, 4.82],
+                [5.0, 5.68]
+        ]
+};
+const data2 = {
+    source: [
+        [[28604,77,17096869,'Australia',1990],[31163,77.4,27662440,'Canada',1990],[1516,68,1154605773,'China',1990],[13670,74.7,10582082,'Cuba',1990],[28599,75,4986705,'Finland',1990],[29476,77.1,56943299,'France',1990],[31476,75.4,78958237,'Germany',1990],[28666,78.1,254830,'Iceland',1990],[1777,57.7,870601776,'India',1990],[29550,79.1,122249285,'Japan',1990],[2076,67.9,20194354,'North Korea',1990],[12087,72,42972254,'South Korea',1990],[24021,75.4,3397534,'New Zealand',1990],[43296,76.8,4240375,'Norway',1990],[10088,70.8,38195258,'Poland',1990],[19349,69.6,147568552,'Russia',1990],[10670,67.3,53994605,'Turkey',1990],[26424,75.7,57110117,'United Kingdom',1990],[37062,75.4,252847810,'United States',1990]],
+        [[44056,81.8,23968973,'Australia',2015],[43294,81.7,35939927,'Canada',2015],[13334,76.9,1376048943,'China',2015],[21291,78.5,11389562,'Cuba',2015],[38923,80.8,5503457,'Finland',2015],[37599,81.9,64395345,'France',2015],[44053,81.1,80688545,'Germany',2015],[42182,82.8,329425,'Iceland',2015],[5903,66.8,1311050527,'India',2015],[36162,83.5,126573481,'Japan',2015],[1390,71.4,25155317,'North Korea',2015],[34644,80.7,50293439,'South Korea',2015],[34186,80.6,4528526,'New Zealand',2015],[64304,81.6,5210967,'Norway',2015],[24787,77.3,38611794,'Poland',2015],[23038,73.13,143456918,'Russia',2015],[19360,76.5,78665830,'Turkey',2015],[38225,81.4,64715810,'United Kingdom',2015],[53354,79.1,321773631,'United States',2015]]
     ]
 };
-const stackData = {
-    dimensions: ['星期', '邮件营销', '联盟广告', '视频广告', '直接访问', '搜索引擎'],
-    source: [
-        {'星期': 'Mon', '邮件营销': 120, '联盟广告':220 , '视频广告':150, '直接访问':320, '搜索引擎':820},
-        {'星期': 'Tue', '邮件营销': 132, '联盟广告':182, '视频广告':232, '直接访问':332, '搜索引擎':932},
-        {'星期': 'Wed', '邮件营销': 101, '联盟广告':191, '视频广告':201, '直接访问':301, '搜索引擎':901},
-        {'星期': 'Thu', '邮件营销': 134, '联盟广告':234 , '视频广告':154, '直接访问':334, '搜索引擎':934},
-        {'星期': 'Fri', '邮件营销': 90,  '联盟广告':290, '视频广告':190, '直接访问':390, '搜索引擎':1290},
-        {'星期': 'Sat', '邮件营销': 230, '联盟广告':330, '视频广告':330, '直接访问':330, '搜索引擎':1330},
-        {'星期': 'Sun', '邮件营销': 210, '联盟广告':230, '视频广告':410, '直接访问':320, '搜索引擎':1320}
-    ]
-};
-export const barData = [
+export const renderData = [
     {
-        title: '普通折线图(Basic Line Chart)',
-        chartsData: data,
-        chartOption: {
+        title: {
+            text: '基本散点图(Basic Scatter Chart)'
+        },
+        chartsData: data1,
+        chartsOption: {
             // 针对 全局
             seriesSetting: {
                 label: {
                     show: false,
                     position: 'center'
+                },
+                symbolSize: 20
+            }
+        }
+    },
+    {
+        name: {
+            text: 'Bubble Chart'
+        },
+        title: {
+            text: '1990 与 2015 年各国家人均寿命与 GDP'
+        },
+        chartsData: data2,
+        chartsOption: {
+            // 针对 全局
+            seriesSetting: {
+                label: {
+                    show: false,
+                    position: 'center'
+                },
+                symbolSize: 20
+            }
+        },
+        legend: {
+            right: 10,
+            data: ['1990', '2015']
+        },
+        xAxis: {
+            splitLine: {
+                lineStyle: {
+                    type: 'dashed'
                 }
             }
-        }
-    },
-    {
-        title:'区域折线图(Basic area chart)',
-        chartsData: data,
-        chartOption: {
-            axisVisible: [true, true],
-            // 坐标轴展示数据类型 这两个参数配置不好图形展示会出现差异
-            axisName: ['', ''],
-            // 针对x轴的起始
-            boundaryGap: false,
-            legend: {
-                visible: true
+        },
+        yAxis: {
+            splitLine: {
+                lineStyle: {
+                    type: 'dashed'
+                }
             },
-            // 针对 全局
-            seriesSetting: {
-                smooth: true,
-                areaStyle: {},
-            }
-        }
-    },
-    {
-        title:'柔顺过渡折线图(Smoothed line chart)',
-        chartsData: data,
-        chartOption: {
-            axisVisible: [true, true],
-            // 坐标轴展示数据类型 这两个参数配置不好图形展示会出现差异
-            axisName: ['', ''],
-            // 针对x轴的起始
-            boundaryGap: false,
-            legend: {
-                visible: true
+            scale: true
+        },
+        series: [{
+            name: '1990',
+            data: data2.source[0],
+            type: 'scatter',
+            symbolSize: function (data) {
+                return Math.sqrt(data[2]) / 5e2;
             },
-            // 针对 全局
-            seriesSetting: {
-                smooth: true
-            }
-        }
-    },
-    {
-        title:'堆叠区域折线图(Stacked area chart)',
-        chartsData: stackData,
-        chartOption: {
-            axisVisible: [true, true],
-            // 坐标轴展示数据类型 这两个参数配置不好图形展示会出现差异
-            axisName: ['', ''],
-            stackable: true,
-            // 针对x轴的起始
-            boundaryGap: false,
-            legend: {
-                visible: true
+            emphasis: {
+                label: {
+                    show: true,
+                    formatter: function (param) {
+                        return param.data[3];
+                    },
+                    position: 'top'
+                }
             },
-            // 针对 全局
-            seriesSetting: {
-                smooth: true,
-                areaStyle: {},
+            itemStyle: {
+                shadowBlur: 10,
+                shadowColor: 'rgba(120, 36, 50, 0.5)',
+                shadowOffsetY: 5
             }
-        }
-    },
-    {
-        title:'堆叠折线图(Stacked line chart)',
-        chartsData: stackData,
-        chartOption: {
-            axisVisible: [true, true],
-            // 坐标轴展示数据类型 这两个参数配置不好图形展示会出现差异
-            axisName: ['', ''],
-            stackable: true,
-            // 针对x轴的起始
-            boundaryGap: false,
-            legend: {
-                visible: true
+        }, {
+            name: '2015',
+            data: data2.source[1],
+            type: 'scatter',
+            symbolSize: function (data) {
+                return Math.sqrt(data[2]) / 5e2;
+            },
+            emphasis: {
+                label: {
+                    show: true,
+                    formatter: function (param) {
+                        return param.data[3];
+                    },
+                    position: 'top'
+                }
+            },
+            itemStyle: {
+                shadowBlur: 10,
+                shadowColor: 'rgba(25, 100, 150, 0.5)',
+                shadowOffsetY: 5
             }
-        }
+        }]
     }
 ];

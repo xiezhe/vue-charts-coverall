@@ -13,7 +13,7 @@ function mockData() {
         source
     }
 }
-let chartOption = {
+let chartsOption = {
     type: 'histogram', //histogram/bar
     // 是否堆叠
     stackable: false,
@@ -36,9 +36,9 @@ let chartOption = {
     }
 };
 let example0 = mockData();
-export const barData = [
+export const renderData = [
     {
         chartsData: example0,
-        chartOption
+        chartsOption
     }
 ]

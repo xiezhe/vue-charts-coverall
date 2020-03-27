@@ -17,7 +17,7 @@
 | Soure[2][dimension[1]] | Soure[2]dimension[2] | Soure[2]dimension[2] |
 
 
-## chartOption
+## chartsOption
 
 | 属性名  | 类型 | 说明 | 默认值 | 可选值 |
 | --- | --- | --- | --- | --- |

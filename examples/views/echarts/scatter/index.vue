@@ -1,19 +1,15 @@
 <template>
     <div class="example-scatter">
-        <h1>scatter</h1>
-        <div class="scatter" v-for="item in barData">
-            <h2>{{item.title}}</h2>
-            <VueEchartsScatter :chartsData="item.chartsData" :chartOption="item.chartOption"></VueEchartsScatter>
-            <div>
-
-            </div>
+        <h1>散点图（scatter）</h1>
+        <div class="scatter" v-for="item in renderData">
+            <VueEchartsScatter :chartsData="item.chartsData" :chartsOption="item.chartsOption" :title="item.title" :series="item.series" :xAxis="item.xAxis" :yAxis="item.yAxis"></VueEchartsScatter>
         </div>
 
     </div>
 </template>
 
 <script>
-    import {barData} from './data'
+    import {renderData} from './data'
     import VueEchartsScatter from '_p/vue-echarts-scatter'
     export default {
         name: "echarts-scatter",
@@ -22,11 +18,11 @@
         },
         data(){
             return {
-                barData,
+                renderData,
             }
         },
         mounted(){
-            console.log(this.barData);
+
         }
     }
 </script>
@@ -34,7 +30,7 @@
 <style lang="scss">
     .example-scatter{
         height: 100%;
-        .line {
+        .scatter {
             height: 300px;
         }
     }

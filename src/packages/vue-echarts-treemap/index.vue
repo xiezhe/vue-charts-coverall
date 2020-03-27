@@ -25,7 +25,8 @@
 
         },
         mounted(){
-
+            this.setCharts();
+            this.init();
         }
     }
 </script>

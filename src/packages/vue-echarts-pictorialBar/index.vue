@@ -16,16 +16,18 @@
         },
         data(){
             return {
-
+                seriesModel: {
+                    type: 'pictorialBar',
+                    data: []
+                }
             }
         },
         components: {
         },
         methods: {
-
         },
         mounted(){
-
+            this.init();
         }
     }
 </script>
