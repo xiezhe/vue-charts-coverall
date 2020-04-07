@@ -25,20 +25,16 @@
                         name: 'line'
                     },
                     {
-                        title: '柱状图',
+                        title: '柱状图ok',
                         name: 'bar'
                     },
                     {
-                        title: '饼图',
-                        name: 'line',
+                        title: '饼图ok',
+                        name: 'pie',
                     },
                     {
-                        title: '散点图',
+                        title: '散点图ok',
                         name: 'scatter'
-                    },
-                    {
-                        title: '地理坐标/地图',
-                        name: 'GEO/Map'
                     },
                     {
                         title: 'K线图',
@@ -53,31 +49,23 @@
                         name: 'boxplot'
                     },
                     {
-                        title: '热力图',
-                        name: 'heatmap'
-                    },
-                    {
-                        title: '关系图',
+                        title: '关系图ok',
                         name: 'graph'
-                    },
-                    {
-                        title: '路径图',
-                        name: 'lines'
                     },
                     {
                         title: '树图ok',
                         name: 'tree'
                     },
                     {
-                        title: '矩形树图',
+                        title: '矩形树图ok',
                         name: 'treemap'
                     },
                     {
-                        title: '旭日图',
+                        title: '旭日图ok',
                         name: 'sunburst'
                     },
                     {
-                        title: '平行坐标系',
+                        title: '平行坐标系ok',
                         name: 'parallel'
                     },
                     {
@@ -103,6 +91,18 @@
                     {
                         title: '自定义系列',
                         name: 'custom'
+                    },
+                    {
+                        title: '地理坐标/地图',
+                        name: 'map'
+                    },
+                    {
+                        title: '路径图',
+                        name: 'lines'
+                    },
+                    {
+                        title: '热力图',
+                        name: 'heatmap'
                     }
                 ]
             }

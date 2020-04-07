@@ -18,6 +18,9 @@
     import echartsPictorialBar from '../pictorialBar';
     import echartsSunburst from '../sunburst';
     import echartsTree from '../tree';
+    import echartsTreemap from '../treemap';
+    import echartsParallel from '../parallel';
+    import echartsGraph from '../graph';
     export default {
         name: "echarts-view",
         components: {
@@ -34,7 +37,10 @@
             echartsSankey,
             echartsPictorialBar,
             echartsSunburst,
-            echartsTree
+            echartsTree,
+            echartsTreemap,
+            echartsParallel,
+            echartsGraph
         },
         data(){
             return {

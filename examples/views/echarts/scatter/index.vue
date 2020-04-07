@@ -2,7 +2,7 @@
     <div class="example-scatter">
         <h1>散点图（scatter）</h1>
         <div class="scatter" v-for="item in renderData">
-            <VueEchartsScatter :chartsData="item.chartsData" :chartsOption="item.chartsOption" :title="item.title" :series="item.series" :xAxis="item.xAxis" :yAxis="item.yAxis"></VueEchartsScatter>
+            <VueEchartsScatter :chartsData="item.chartsData" :chartsOption="item.chartsOption" :title="item.title" :series="item.series"></VueEchartsScatter>
         </div>
 
     </div>

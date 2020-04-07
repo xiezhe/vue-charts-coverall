@@ -19,7 +19,7 @@
     "build": "vue-cli-service build",
     "test:e2e": "vue-cli-service test:e2e",
     "test:unit": "vue-cli-service test:unit",
-    "lib": "vue-cli-service build --target lib --name vue-charts --dest lib src/index.js"
+    "lib": "vue-cli-service build --target lib --name vue-charts-coveral --dest lib packages/index.js"
   },
   "dependencies": {
     "core-js": "^3.6.4",

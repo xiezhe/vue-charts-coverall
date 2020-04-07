@@ -9,6 +9,19 @@ module.exports = {
             .set('@', resolve('src'))
             .set('_c', resolve('src/components'))
             .set('_s', resolve('static'))
-            .set('_p', resolve('src/packages'))
+            .set('_p', resolve('packages'));
+        config.module
+            .rule('js')
+            .include.add(/packages/)
+            .end()
+            .include.add(/examples/)
+            .end()
+            .use('babel')
+            .loader('babel-loader')
+            .tap(options => {
+                // 修改它的选项...
+                console.log(options)
+                return options;
+            });
     }
 }

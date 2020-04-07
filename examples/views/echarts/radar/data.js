@@ -167,7 +167,7 @@ export const renderData = [
                 }
             }
         }
-    },
+    }/*,
     {
         title: {
             text: 'AQI - 雷达图',
@@ -237,5 +237,5 @@ export const renderData = [
                 }
             }
         }
-    }
+    }*/
 ];

@@ -2,10 +2,10 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import vueEcharts from '../src/index';
+import vueCharts from '../packages/index';
 import './styles/index.scss'
 Vue.config.productionTip = false
-Vue.use(vueEcharts);
+Vue.use(vueCharts);
 new Vue({
     router,
     store,

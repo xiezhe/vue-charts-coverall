@@ -1,4 +1,7 @@
-#line
+# xAxis 和 yAxis 是必须的
+
+
+# scatter
 
 ## chartsData
 
